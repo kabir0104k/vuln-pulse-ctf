@@ -1,92 +1,51 @@
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 230 14% 10%;
+    --foreground: 220 13% 91%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 230 14% 12%;
+    --card-foreground: 220 13% 91%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 230 14% 12%;
+    --popover-foreground: 220 13% 91%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 155 100% 45%;
+    --primary-foreground: 220 13% 91%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 220 14% 96%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 230 14% 16%;
+    --muted-foreground: 220 14% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 155 70% 45%;
+    --accent-foreground: 220 14% 96%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 50.6%;
+    --destructive-foreground: 220 13% 91%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 230 12% 18%;
+    --input: 230 12% 18%;
+    --ring: 155 70% 45%;
+    
+    --sidebar-background: 230 14% 8%;
+    --sidebar-foreground: 220 13% 91%;
+    --sidebar-primary: 155 70% 45%;
+    --sidebar-primary-foreground: 230 14% 10%;
+    --sidebar-accent: 230 14% 14%;
+    --sidebar-accent-foreground: 220 13% 91%;
+    --sidebar-border: 230 12% 18%;
+    --sidebar-ring: 155 70% 45%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -96,6 +55,110 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
+  }
+}
+
+@layer utilities {
+  .glitch-effect {
+    @apply relative inline-block;
+  }
+  
+  .glitch-effect::before,
+  .glitch-effect::after {
+    @apply content-[''] absolute top-0 left-0 w-full h-full;
+    clip: rect(44px, 450px, 56px, 0);
+  }
+  
+  .glitch-effect::before {
+    @apply text-cyber-green left-[3px];
+    animation: glitch-anim 2s infinite linear alternate-reverse;
+  }
+  
+  .glitch-effect::after {
+    @apply text-cyber-red left-[-3px];
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+  }
+
+  .cyber-border {
+    @apply relative after:content-[''] after:absolute after:top-[-3px] after:left-[-3px] after:right-[-3px] after:bottom-[-3px] after:border after:border-cyber-green/40 after:z-[-1];
+  }
+
+  .matrix-bg {
+    @apply relative overflow-hidden;
+  }
+
+  .matrix-bg::before {
+    @apply content-[''] absolute top-0 left-0 right-0 bottom-0 z-[-1] opacity-10;
+    background-image: 
+      linear-gradient(0deg, rgba(10, 255, 10, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 255, 10, 0.1) 1px, transparent 1px);
+    background-size: 30px 30px;
+  }
+}
+
+@keyframes glitch-anim {
+  0% {
+    clip: rect(64px, 450px, 92px, 0);
+  }
+  5% {
+    clip: rect(12px, 450px, 37px, 0);
+  }
+  10% {
+    clip: rect(56px, 450px, 84px, 0);
+  }
+  15% {
+    clip: rect(87px, 450px, 95px, 0);
+  }
+  20% {
+    clip: rect(33px, 450px, 46px, 0);
+  }
+  25% {
+    clip: rect(89px, 450px, 94px, 0);
+  }
+  30% {
+    clip: rect(5px, 450px, 16px, 0);
+  }
+  35% {
+    clip: rect(42px, 450px, 72px, 0);
+  }
+  40% {
+    clip: rect(28px, 450px, 37px, 0);
+  }
+  45% {
+    clip: rect(52px, 450px, 67px, 0);
+  }
+  50% {
+    clip: rect(9px, 450px, 17px, 0);
+  }
+  55% {
+    clip: rect(60px, 450px, 74px, 0);
+  }
+  60% {
+    clip: rect(29px, 450px, 38px, 0);
+  }
+  65% {
+    clip: rect(92px, 450px, 98px, 0);
+  }
+  70% {
+    clip: rect(9px, 450px, 17px, 0);
+  }
+  75% {
+    clip: rect(91px, 450px, 95px, 0);
+  }
+  80% {
+    clip: rect(23px, 450px, 35px, 0);
+  }
+  85% {
+    clip: rect(65px, 450px, 78px, 0);
+  }
+  90% {
+    clip: rect(2px, 450px, 14px, 0);
+  }
+  95% {
+    clip: rect(53px, 450px, 58px, 0);
+  }
+  100% {
+    clip: rect(48px, 450px, 52px, 0);
   }
 }
