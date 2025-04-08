@@ -1,10 +1,11 @@
 
 import Layout from "@/components/layout/Layout";
 import Hero from "@/components/home/Hero";
-import Features from "@/components/home/Features";
-import ChallengeCategories from "@/components/home/ChallengeCategories";
-import TopUsers from "@/components/home/TopUsers";
+import ChallengeTypes from "@/components/home/ChallengeTypes";
+import LatestChallenges from "@/components/home/LatestChallenges";
+import LeaderboardPreview from "@/components/home/LeaderboardPreview";
 import CallToAction from "@/components/home/CallToAction";
+import Statistics from "@/components/home/Statistics";
 import MatrixRain from "@/components/animations/MatrixRain";
 
 const Index = () => {
@@ -12,9 +13,10 @@ const Index = () => {
     <Layout>
       <MatrixRain />
       <Hero />
-      <Features />
-      <ChallengeCategories />
-      <TopUsers />
+      <Statistics />
+      <ChallengeTypes />
+      <LatestChallenges />
+      <LeaderboardPreview />
       <CallToAction />
     </Layout>
   );
